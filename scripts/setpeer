@@ -1,0 +1,16 @@
+if [ -z $1 ]; then
+  echo -e "\nError: Please specify a peer number [1-4]\n"
+  return 1
+fi
+
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peer/peer$1/localMspConfig
+export CORE_PEER_ADDRESS=peer$1:7051
+
+if [ $1 -eq 1 -o $1 -eq 2 ] ; then
+  export CORE_PEER_LOCALMSPID="Org1MSP"
+  export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peer/peer$1/localMspConfig/cacerts/peerOrg1-cert.pem
+else
+  export CORE_PEER_LOCALMSPID="Org2MSP"
+  export CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peer/peer$1/localMspConfig/cacerts/peerOrg2-cert.pem
+fi
+env |grep CORE

@@ -1,0 +1,3 @@
+export CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/orderer/localMspConfig
+export CORE_PEER_LOCALMSPID="OrdererMSP"
+env | grep CORE

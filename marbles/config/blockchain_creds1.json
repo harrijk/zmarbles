@@ -1,0 +1,41 @@
+{
+    "credentials": {
+        "network_id": "",
+        "orderers": [
+            {
+                "discovery": "grpc://localhost:7050",
+                "msp_id": "OrdererMSP",
+                "host": "localhost",
+                "port": 7050
+            }
+        ],
+        "cas": [
+            {
+                "api": "http://localhost:7054",
+                "msp_id": "Org1MSP",
+                "users": [
+                    {
+                        "enrollId": "admin",
+                        "enrollSecret": "adminpw"
+                    }
+                ]
+            }
+        ],
+        "peers": [
+            {
+                "name": "fabric-peer-1a",
+                "discovery": "grpc://localhost:7051",
+                "events": "grpc://localhost:7053",
+                "msp_id": "Org1MSP",
+                "grpc_host": "localhost",
+                "grpc_port": 7051
+            }
+        ],
+        "app": {
+            "channel_id": "john",
+            "chaincode_id": "marbles",
+            "chaincode_version": "1.0",
+            "block_delay": 1000
+        }
+    }
+}
